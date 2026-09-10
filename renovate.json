@@ -7,8 +7,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "(^|/)\\.github/workflows/[^/]+\\.ya?ml$"
+      "managerFilePatterns": [
+        "/(^|/)\\.github/workflows/[^/]+\\.ya?ml$/"
       ],
       "matchStrings": [
         "ghcr\\.io/lucasew/ts-proxy:(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)"
