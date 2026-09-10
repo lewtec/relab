@@ -2,6 +2,16 @@
 
 Selkies XFCE Desktop with Ghidra and LaurieWired GhidraMCP. Law is `SPEC.md`.
 
+## Image
+
+CI builds `linux/amd64` and pushes `ghcr.io/<owner>/relab` on `master`/`main` and on `v*` tags. Pull requests run the checks and bake the image without pushing.
+
+```
+docker pull ghcr.io/<owner>/relab:latest
+```
+
+Point `image:` in `docker-compose.yml` at that tag when you do not want to bake locally.
+
 ## Apply
 
 ```
