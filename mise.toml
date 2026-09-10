@@ -1,0 +1,12 @@
+[tools.java]
+version = "temurin-21"
+
+[tools."github:NationalSecurityAgency/ghidra"]
+version = "Ghidra_12.1.3_build"
+asset_pattern = "*PUBLIC*.zip"
+checksum = "sha256:93a5d11a9ad510622acaaf908c556a7b9b764d338e78a7567f3689bf5081fd54"
+
+[tools."github:LaurieWired/GhidraMCP"]
+version = "1.4"
+asset_pattern = "GhidraMCP-release-*.zip"
+checksum = "sha256:b81ca5240fdde57ea4e899170dcd9fdee6ed29246280c74263a509bfcfc7e734"

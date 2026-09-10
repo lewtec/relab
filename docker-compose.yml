@@ -1,0 +1,19 @@
+services:
+  relab:
+    build: .
+    image: relab:local
+    container_name: relab
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - TITLE=relab
+    volumes:
+      - ./config:/config
+      - ./data:/data
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "8081:8081"
+    shm_size: "1gb"
+    restart: unless-stopped

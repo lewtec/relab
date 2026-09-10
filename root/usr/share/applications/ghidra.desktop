@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Ghidra
+Comment=Software reverse engineering
+Exec=ghidraRun
+Terminal=false
+Categories=Development;
+StartupNotify=true
