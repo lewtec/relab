@@ -3,8 +3,8 @@
 #     -f docker-compose.yml -f compose.tailscale.yml up
 #
 # Image: ghcr.io/lucasew/ts-proxy:0.14.0
-# `forward: relab` wraps the compose service. Same ports as the container.
-# Desktop: https://<RELAB_HOSTNAME>.<tailnet>.ts.net:3001
+# `forward: relab` wraps the compose service. :80/:443 map to Selkies HTTP.
+# Desktop: https://<RELAB_HOSTNAME>.<tailnet>.ts.net
 # MCP:     http://<RELAB_HOSTNAME>.<tailnet>.ts.net:8081/sse
 
 services:

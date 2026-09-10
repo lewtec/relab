@@ -1,12 +1,9 @@
 # Example Front: wrap the relab container as one tailnet node.
-# ts-proxy 0.14.0 `forward` sends unmatched TCP to the same port on that host.
+# `forward` keeps container ports (3000, 3001, 8081).
+# :80 and :443 map to Selkies HTTP so the MagicDNS name works with no port.
+# :80 is TCP so ts-proxy does not 301 the FQDN to the short hostname.
+# :443 is Tailscale TLS in front of the same HTTP upstream.
 # Funnel stays off.
-#
-# Apply:
-#   docker compose -f docker-compose.yml -f compose.tailscale.yml up
-#
-# First start prints a Tailscale login URL unless TS_AUTHKEY is set
-# and the tokens block below is uncommented.
 
 state_dir: /var/lib/ts-proxy
 stop_on_fail: false
@@ -20,3 +17,11 @@ servers:
     hostname: "${RELAB_HOSTNAME}"
     # token: default
     forward: relab
+    handlers:
+      - type: tcp
+        listen: ":80"
+        upstream_address: "relab:3000"
+      - type: http
+        listen: ":443"
+        upstream_address: "relab:3000"
+        tls: true

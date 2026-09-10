@@ -33,7 +33,7 @@ No password. Place a Front if the ports must not be open.
 
 ## Tailnet (ts-proxy)
 
-Optional overlay. `ghcr.io/lucasew/ts-proxy:0.14.0` wraps the relab container as one tailnet node (`forward: relab`). Every TCP port on the container is the same port on `<RELAB_HOSTNAME>.<tailnet>.ts.net`.
+Optional overlay. `ghcr.io/lucasew/ts-proxy:0.14.0` wraps the relab container as one tailnet node (`forward: relab`). Container ports stay on the node. `:80` and `:443` also map to Selkies HTTP so the MagicDNS name works with no port.
 
 `RELAB_HOSTNAME` is the Tailscale node name. Default is `relab`. ts-proxy expands it from the environment. Use a different value per instance, and a distinct compose project so names do not clash.
 
@@ -44,8 +44,9 @@ RELAB_HOSTNAME=lab-alice RELAB_CONFIG=./alice/config RELAB_DATA=./alice/data \
 
 Watch `<RELAB_HOSTNAME>-ts-proxy` logs for the first-run login URL. Tailscale state is `./ts-proxy-state/<RELAB_HOSTNAME>`. The overlay does not publish host ports.
 
-- Desktop: `https://<RELAB_HOSTNAME>.<tailnet>.ts.net:3001`
-- Desktop HTTP: `http://<RELAB_HOSTNAME>.<tailnet>.ts.net:3000`
+- Desktop: `https://<RELAB_HOSTNAME>.<tailnet>.ts.net` (Tailscale cert)
+- Desktop HTTP: `http://<RELAB_HOSTNAME>.<tailnet>.ts.net`
 - MCP: `http://<RELAB_HOSTNAME>.<tailnet>.ts.net:8081/sse`
+- MCP via Selkies: `https://<RELAB_HOSTNAME>.<tailnet>.ts.net/mcp/sse`
 
 Config is `examples/ts-proxy.yaml`. Funnel is off. To use an auth key, set `TS_AUTHKEY` and uncomment the `tokens` block in that file.
