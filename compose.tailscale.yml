@@ -1,0 +1,31 @@
+# Overlay. Does not replace docker-compose.yml.
+#   RELAB_HOSTNAME=lab-alice docker compose -p lab-alice \
+#     -f docker-compose.yml -f compose.tailscale.yml up
+#
+# Image: ghcr.io/lucasew/ts-proxy:0.14.0
+# `forward: relab` wraps the compose service. Same ports as the container.
+# Desktop: https://<RELAB_HOSTNAME>.<tailnet>.ts.net:3001
+# MCP:     http://<RELAB_HOSTNAME>.<tailnet>.ts.net:8081/sse
+
+services:
+  relab:
+    container_name: ${RELAB_HOSTNAME:-relab}
+    ports: !reset []
+    environment:
+      TITLE: ${RELAB_HOSTNAME:-relab}
+    volumes:
+      - ${RELAB_CONFIG:-./config}:/config
+      - ${RELAB_DATA:-./data}:/data
+  ts-proxy:
+    image: ghcr.io/lucasew/ts-proxy:0.14.0
+    container_name: ${RELAB_HOSTNAME:-relab}-ts-proxy
+    depends_on:
+      - relab
+    user: "0:0"
+    volumes:
+      - ./examples/ts-proxy.yaml:/etc/ts-proxy/ts-proxy.yaml:ro
+      - ./ts-proxy-state/${RELAB_HOSTNAME:-relab}:/var/lib/ts-proxy
+    environment:
+      RELAB_HOSTNAME: ${RELAB_HOSTNAME:-relab}
+      TS_AUTHKEY: ${TS_AUTHKEY:-}
+    restart: unless-stopped

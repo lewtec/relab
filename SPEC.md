@@ -200,9 +200,8 @@ Residual risk: anyone who reaches the published ports has the Desktop (including
 4. Seeding the plugin so the Bridge works with no GUI click.
 5. Kitchen-sink reverse-engineering tools.
 6. SealSkin.
-7. A Front recipe in this repo.
-8. Headless-only Ghidra.
-9. First-party Bridge auth.
+7. Headless-only Ghidra.
+8. First-party Bridge auth.
 
 ## Assumptions
 

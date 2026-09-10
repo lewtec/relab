@@ -1,0 +1,22 @@
+# Example Front: wrap the relab container as one tailnet node.
+# ts-proxy 0.14.0 `forward` sends unmatched TCP to the same port on that host.
+# Funnel stays off.
+#
+# Apply:
+#   docker compose -f docker-compose.yml -f compose.tailscale.yml up
+#
+# First start prints a Tailscale login URL unless TS_AUTHKEY is set
+# and the tokens block below is uncommented.
+
+state_dir: /var/lib/ts-proxy
+stop_on_fail: false
+
+# tokens:
+#   default:
+#     auth_key: "${TS_AUTHKEY}"
+
+servers:
+  relab:
+    hostname: "${RELAB_HOSTNAME}"
+    # token: default
+    forward: relab
