@@ -1,0 +1,38 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "github>lewtec/renovate-config:base"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "(^|/)\\.github/workflows/[^/]+\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "ghcr\\.io/lucasew/ts-proxy:(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/lucasew/ts-proxy"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Group ts-proxy image pins",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "ghcr.io/lucasew/ts-proxy"
+      ],
+      "groupName": "ts-proxy"
+    },
+    {
+      "automerge": true,
+      "matchUpdateTypes": [
+        "patch"
+      ]
+    }
+  ]
+}
