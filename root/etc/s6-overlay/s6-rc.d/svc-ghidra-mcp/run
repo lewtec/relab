@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
-exec s6-setuidgid abc /opt/ghidra-mcp/bin/python /opt/ghidra-mcp/bridge_mcp_ghidra.py \
+exec s6-setuidgid abc /opt/ghidra-mcp/bin/python /opt/ghidra-mcp/run-bridge.py \
   --transport sse \
   --mcp-host 0.0.0.0 \
   --mcp-port 8081 \

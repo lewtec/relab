@@ -1,15 +1,17 @@
 relab — Ghidra MCP
 
-1. Open Ghidra from the applications menu.
-2. Enable GhidraMCPPlugin: File → Configure → Developer → GhidraMCPPlugin.
+1. Open Ghidra from Applications.
+2. File → Configure → Developer → enable GhidraMCPPlugin.
 3. Restart Ghidra if it asks.
-4. Open a project. Put it under /data to keep it on the Data volume.
-5. The Bridge is already running.
+4. Open a project. Keep it under /data.
+5. Double-click a program so CodeBrowser opens. Plugin HTTP starts then.
+6. The Bridge is already running.
 
-MCP URLs:
-  http://<host>:8081/sse
-  https://<host>:3001/mcp/sse
+Desktop:
+  https://<RELAB_HOSTNAME>.<tailnet>.ts.net
+MCP:
+  https://<RELAB_HOSTNAME>.<tailnet>.ts.net/mcp/sse
+  http://<RELAB_HOSTNAME>.<tailnet>.ts.net:8081/sse
 
-Plugin HTTP stays on 127.0.0.1:8080 inside the container.
-
-This Desktop has no password. Place a Front if the ports must not be open.
+Plugin HTTP is 127.0.0.1:8080 inside the container.
+This Desktop has no password.

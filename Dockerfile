@@ -40,6 +40,7 @@ COPY root/ /
 RUN chmod +x \
     /etc/s6-overlay/s6-rc.d/init-relab/run \
     /etc/s6-overlay/s6-rc.d/svc-ghidra-mcp/run \
+    /opt/ghidra-mcp/run-bridge.py \
   && mkdir -p /data
 
 EXPOSE 3000 3001 8081
