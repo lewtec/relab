@@ -1,5 +1,5 @@
 [tools.java]
-version = "temurin-21"
+version = "temurin-25"
 
 [tools."github:NationalSecurityAgency/ghidra"]
 version = "Ghidra_12.1.3_build"
