@@ -1,5 +1,5 @@
-# syntax=docker/dockerfile:1
-FROM lscr.io/linuxserver/webtop:debian-xfce
+# syntax=docker/dockerfile:1@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32
+FROM lscr.io/linuxserver/webtop:debian-xfce@sha256:e2766b2669d71b31d9d1dc006de3c3587f2281c61a490c8449c14b4b754c095a
 
 ENV TITLE=relab \
     MISE_DATA_DIR=/mise \
