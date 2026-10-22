@@ -17,7 +17,7 @@ services:
       - ${RELAB_CONFIG:-./config}:/config
       - ${RELAB_DATA:-./data}:/data
   ts-proxy:
-    image: ghcr.io/lucasew/ts-proxy:0.14.0
+    image: ghcr.io/lucasew/ts-proxy:0.15.1@sha256:5ae4657d4f46136436aa7a1b635e4b3808677425efb3aea8707885f26ce58a5c
     container_name: ${RELAB_HOSTNAME:-relab}-ts-proxy
     depends_on:
       - relab

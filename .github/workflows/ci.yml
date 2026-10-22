@@ -40,7 +40,7 @@ jobs:
           docker run --rm \
             -e RELAB_HOSTNAME=relab \
             -v "$PWD/examples/ts-proxy.yaml:/etc/ts-proxy/ts-proxy.yaml:ro" \
-            ghcr.io/lucasew/ts-proxy:0.14.0 \
+            ghcr.io/lucasew/ts-proxy:0.15.1 \
             config --config /etc/ts-proxy/ts-proxy.yaml
 
   image:
